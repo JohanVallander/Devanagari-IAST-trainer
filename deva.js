@@ -43,21 +43,32 @@ var deva={
 	    
 	
 	}
-	console.log("=========================");
-	console.log(deva.readySanskrit);
-	console.log(deva.remainingSanskrit);
-	console.log(strippedRemaining);
 	if(strippedRemaining.search(devanagari) == 0){
-	    //right button, we should make some more letters green
+	    //correct button clicked , we should make some more letters green
 	    console.log("hit");
 	    
 	    var index = deva.remainingSanskrit.search(devanagari) + devanagari.length;
 
 	    deva.readySanskrit += deva.remainingSanskrit.slice(0,index);
 	    deva.remainingSanskrit = deva.remainingSanskrit.slice(index);
+
 	    deva.updateSanskrit();
+	    //and we should turn the button green
+	    $(button).removeClass('btn-primary');
+	    $(button).addClass('btn-success');
+  
+	    $(button).delay(337).fadeOut(1000);
+	    
+	}else{
+	    $(button).removeClass('btn-primary');
+	    $(button).addClass('btn-danger');
+	    setTimeout(function () {
+		$(button).removeClass('btn-danger');
+		$(button).addClass('btn-primary');
+	    },1000);
 	}
     },
+
     scrambleList: function(list,maxOutOfOrder){
 	var newList=[];
 	for(i in list){
