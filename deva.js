@@ -18,7 +18,21 @@ var deva={
 	button.click(function(){
 	    deva.syllableClick(this);
 	});
-	button.fadeIn(1000);	   
+	button.fadeIn(1000);
+	
+    },
+    updateSyllableButton : function(button){
+	console.log(button);
+	m = this.mappings.shift();
+	devanagari = m[0];
+	iast = m[1];    
+	$(button).replaceWith('<button type="button" class="syllable-button btn btn-primary" value="' + devanagari + '">' + iast +'</button>');
+	//$(button).fadeTo(1000,1);
+	/*$("#syllables").append(button);
+	button.click(function(){
+	    deva.syllableClick(this);
+	});*/
+	//$(button).fadeTo(1000,1);
     },
     scrambleList: function(list,maxOutOfOrder){
 	var scrambledList=[];
@@ -69,15 +83,9 @@ var deva={
 	    $(button).removeClass('btn-primary');
 	    $(button).addClass('btn-success');
 	    //$(button).click(function(){})//do nothing if the user clicks twice 
-	    $(button).fadeOut(1000);
-	    if(this.mappings.length>0){
-		setTimeout(function () {
-		    deva.addSyllableButton();
-		},1000);
-	    }else{
-		alert("congratz");
-		location.reload(); //something more fancy should happen, like going to next verse
-	    }
+	    $(button).fadeTo(900,0.05,function(){
+		deva.updateSyllableButton(this);
+	    });
 	}else{
 	    $(button).removeClass('btn-primary');
 	    $(button).addClass('btn-danger');
@@ -97,7 +105,7 @@ var deva={
     },
     
     loadVerse: function(verseNr){
-	this.currentVerse=verseData.verses[verseNr]
+	this.currentVerse=verseData.verses[verseNr];
 	this.readySanskrit="";
 	this.remainingSanskrit=this.currentVerse.sanskrit;
 	this.updateSanskrit();
