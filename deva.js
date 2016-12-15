@@ -25,14 +25,12 @@ var deva={
 	console.log(button);
 	m = this.mappings.shift();
 	devanagari = m[0];
-	iast = m[1];    
-	$(button).replaceWith('<button type="button" class="syllable-button btn btn-primary" value="' + devanagari + '">' + iast +'</button>');
-	//$(button).fadeTo(1000,1);
-	/*$("#syllables").append(button);
-	button.click(function(){
-	    deva.syllableClick(this);
-	});*/
-	//$(button).fadeTo(1000,1);
+	iast = m[1];
+	$(button).html(iast);
+	$(button).attr("value",devanagari);
+	$(button).removeClass('btn-success');
+	$(button).addClass('btn-primary');
+	$(button).fadeTo(1000,1);
     },
     scrambleList: function(list,maxOutOfOrder){
 	var scrambledList=[];
