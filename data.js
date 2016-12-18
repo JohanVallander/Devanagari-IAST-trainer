@@ -85,7 +85,7 @@ var verseData = {
 	var iast  = "";
 	var lc = ""; //last character
 	
-	for(i in verse+" "){ //looping through sanskrit to parsing into syllables
+	for(var i in verse+" "){ //looping through sanskrit to parsing into syllables
 	    var c=verse.charAt(i);
 	    if(c.charCodeAt() == VIRAMA){
 		sanskrit+=c;
