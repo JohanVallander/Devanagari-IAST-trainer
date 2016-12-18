@@ -103,11 +103,15 @@ var deva={
 	
 	if(this.currentVerse.mappings.length == this.mappingsPosition){ //check if we have completed one verse totally
 	    console.log("ALL DONE");
-	    this.currentVerseNr++;
-	    $('#sanskrit_verse').fadeTo(500,0.05,function(){
-		deva.loadVerse();
-	    });	    
+	    this.changeVerse(this.currentVerseNr+=1);
+	    
 	}	    
+    },
+    changeVerse: function(nr){
+	this.currentVerseNr=nr;
+	$('#sanskrit_verse').fadeTo(500,0.05,function(){
+	    deva.loadVerse();
+	}); 
     },
     
     loadVerse: function(){
