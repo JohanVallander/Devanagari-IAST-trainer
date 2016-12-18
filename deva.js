@@ -1,6 +1,6 @@
 
 var deva={
-    maxVisibleSyllables : 3,  //Nr of clickable IAST choices visible to the user
+    maxVisibleSyllables : 6,  //Nr of clickable IAST choices visible to the user
     initSyllables : function(mappings){
 	this.mappings = this.scrambleList(mappings,this.maxVisibleSyllables);
 	$("#syllables").empty();
