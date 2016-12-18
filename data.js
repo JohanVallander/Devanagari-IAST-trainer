@@ -84,8 +84,9 @@ var verseData = {
 	var sanskrit = "";
 	var iast  = "";
 	var lc = ""; //last character
+	
 	for(i in verse+" "){ //looping through sanskrit to parsing into syllables
-	    var c=verse[i];
+	    var c=verse.charAt(i);
 	    if(c.charCodeAt() == VIRAMA){
 		sanskrit+=c;
 	    }else if(lc in this.characterMappings.consonants && !(c in this.characterMappings.appendedVovels)){
@@ -168,8 +169,52 @@ var verseData = {
 	    ]
 	    //shrīguru charana saroja raja nija mana mukuru sudhāri।
 	    //baranau raghubara bimala jasu jo dāyaku phala chāri॥
+	},
+	{ 
+	    description:"Introductory Doha 2",
+	    sanskrit: "बुद्धिहीन तनु जानिकै सुमिरौं पवनकुमार।बल बुधि बिद्या देहु मोहिं हरहु कलेस बिकार॥",
+	},
+	{ 
+	    description:"The Chalisa, verse 1",
+	    sanskrit: "जय हनुमान ज्ञान गुन सागर। जय कपीस तिहुँ लोक उजागर॥",
+	},
+	{ 
+	    description:"The Chalisa, verse 2",
+	    sanskrit: "राम दूत अतुलित बल धामा। अंजनि पुत्र पवनसुत नामा॥",
+	},
+	{ 
+	    description:"The Chalisa, verse 3",
+	    sanskrit: "महावीर विक्रम बजरंगी।कुमति निवार सुमति के संगी॥",
+	},
+	{ 
+	    description:"The Chalisa, verse 4",
+	    sanskrit: "कंचन बरन बिराज सुबेसा।कानन कुंडल कुंचित केसा॥",
+	},
+	{ 
+	    description:"The Chalisa, verse 5",
+	    sanskrit: "हाथ बज्र औ ध्वजा बिराजै।काँधे मूँज जनेऊ साजै॥",
+	},
+	{ 
+	    description:"The Chalisa, verse 6",
+	    sanskrit: "शंकर सुवन केसरी नंदन।तेज प्रताप महा जग बंदन॥ ",
+	},
+	{ 
+	    description:"The Chalisa, verse 7",
+	    sanskrit: "विद्यावान गुनी अति चातुर।राम काज करिबे को आतुर॥",
+	},
+	{ 
+	    description:"The Chalisa, verse 8",
+	    sanskrit: "प्रभु चरित्र सुनिबे को रसिया।राम लखन सीता मन बसिया॥",
+	},
+	{ 
+	    description:"The Chalisa, verse 9",
+	    sanskrit: "सूक्ष्म रूप धरी सियहिं दिखावा।बिकट रूप धरि लंक जरावा॥",
+	},
+	{ 
+	    description:"The Chalisa, verse 10",
+	    sanskrit: "भीम रूप धरि असुर सँहारे।रामचन्द्र के काज सँवारे॥",
 	}
-	//next verse to come here... eventually
+	
     ]
 };
 
