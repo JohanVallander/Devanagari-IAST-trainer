@@ -1,6 +1,6 @@
 
 var deva={
-    maxVisibleSyllables : 7,  //Nr of clickable IAST choices visible to the user
+    maxVisibleSyllables : 3,  //Nr of clickable IAST choices visible to the user
     initSyllables : function(mappings){
 	this.mappings = this.scrambleList(mappings,this.maxVisibleSyllables);
 	$("#syllables").empty();
@@ -22,15 +22,16 @@ var deva={
 	
     },
     updateSyllableButton : function(button){
-	console.log(button);
-	m = this.mappings.shift();
-	devanagari = m[0];
-	iast = m[1];
-	$(button).html(iast);
-	$(button).attr("value",devanagari);
-	$(button).removeClass('btn-success');
-	$(button).addClass('btn-primary');
-	$(button).fadeTo(1000,1);
+	if(this.mappings.length > 0){
+	    m = this.mappings.shift();
+	    devanagari = m[0];
+	    iast = m[1];
+	    $(button).html(iast);
+	    $(button).attr("value",devanagari);
+	    $(button).removeClass('btn-success');
+	    $(button).addClass('btn-primary');
+	    $(button).fadeTo(1000,1);
+	}
     },
     scrambleList: function(list,maxOutOfOrder){
 	var scrambledList=[];
@@ -80,7 +81,6 @@ var deva={
 	    //and we should turn the button green
 	    $(button).removeClass('btn-primary');
 	    $(button).addClass('btn-success');
-	    //$(button).click(function(){})//do nothing if the user clicks twice 
 	    $(button).fadeTo(900,0.05,function(){
 		deva.updateSyllableButton(this);
 	    });
@@ -99,20 +99,29 @@ var deva={
 	remaining = '<span class="text-muted">'+deva.remainingSanskrit+'</span>';
 	sanskrit = ready + remaining;
 	sanskrit = sanskrit.replace(verseData.delimiter,verseData.delimiter+"<br/>");
-	$("#sanskrit_verse").html(sanskrit);	
+	$("#sanskrit_verse").html(sanskrit);
+	
+	if(this.currentVerse.mappings.length == this.mappingsPosition){ //check if we have completed one verse totally
+	    console.log("ALL DONE");
+	    this.currentVerseNr++;
+	    $('#sanskrit_verse').fadeTo(500,0.05,function(){
+		deva.loadVerse();
+	    });	    
+	}	    
     },
     
-    loadVerse: function(verseNr){
-	this.currentVerse=verseData.verses[verseNr];
+    loadVerse: function(){
+	this.currentVerse=verseData.verses[this.currentVerseNr];
 	this.readySanskrit="";
 	this.remainingSanskrit=this.currentVerse.sanskrit;
+	this.mappingsPosition=0;
 	this.updateSanskrit();
 	this.initSyllables(this.currentVerse.mappings);
-	this.mappingsPosition=0;
-    },
-    
+	$('#sanskrit_verse').fadeTo(500,1);
+    },    
 }
 
 $(function(){
-    deva.loadVerse(0);
+    deva.currentVerseNr=0;
+    deva.loadVerse();
 });
