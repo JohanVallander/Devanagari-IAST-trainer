@@ -103,12 +103,12 @@ var deva={
 	
 	if(this.currentVerse.mappings.length == this.mappingsPosition){ //check if we have completed one verse totally
 	    console.log("ALL DONE");
-	    this.changeVerse(this.currentVerseNr+=1);
-	    
+	    this.goNext();
 	}	    
     },
     changeVerse: function(nr){
-	this.currentVerseNr=nr;
+	console.log("changing to "+ nr );
+	deva.currentVerseNr=nr;
 	$('#sanskrit_verse').fadeTo(500,0.05,function(){
 	    deva.loadVerse();
 	}); 
@@ -116,16 +116,56 @@ var deva={
     
     loadVerse: function(){
 	this.currentVerse=verseData.verses[this.currentVerseNr];
+	$('#chapter_description').html(verseData.verses[this.currentVerseNr].description);
+	/*
+	if(this.currentVerseNr > 0 )
+	    $('#previous_button').prop("disabled",false);
+	else
+    	    $('#previous_button').prop("disabled",true);
+	
+	if(this.currentVerseNr < verseData.verses.length)
+	    $('next_button').prop("disabled",false);
+	else
+	    $('#next_button').prop("disabled",true);
+	*/
+				    
+					   
 	this.readySanskrit="";
 	this.remainingSanskrit=this.currentVerse.sanskrit;
 	this.mappingsPosition=0;
 	this.updateSanskrit();
 	this.initSyllables(this.currentVerse.mappings);
 	$('#sanskrit_verse').fadeTo(500,1);
-    },    
+	
+    },
+    goNext: function(){
+	if(deva.currentVerseNr < verseData.verses.length)
+	    deva.changeVerse(deva.currentVerseNr+1);
+	else
+	    deva.changeVerse(0);
+    },
+    goPrevious: function(){
+	if(deva.currentVerseNr > 0)
+	    deva.changeVerse(deva.currentVerseNr-1);
+	else
+	    deva.changeVerse(verseData.verses.length-1);
+    },
+	
+    initChaptersMenu: function(){
+	for(nr in verseData.verses){
+	    menuItem = $('<li><a href="#">'+verseData.verses[nr].description + '</a></li');
+	    menuItem.attr("number",nr);
+	    menuItem.click(function(){deva.changeVerse($(this).attr("number"));});
+	    $('#chapters').append(menuItem);
+	}
+    }
 }
 
 $(function(){
+    deva.initChaptersMenu();
+    $('#next_button').click(deva.goNext);
+    $('#previous_button').click(deva.goPrevious);
+    
     deva.currentVerseNr=0;
     deva.loadVerse();
 });
