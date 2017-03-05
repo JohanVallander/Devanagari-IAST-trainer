@@ -1,7 +1,15 @@
 @font-face {
     font-family: "Devanagari font";
     src : url("fonts/Hind-Medium.ttf");
+    
 }
 div#sanskrit_verse_div{
     font-family:"Devanagari font" !important;
+}
+body{
+    background-color:#e9e;
+}
+
+div#header{
+    background-color:#00f;
 }

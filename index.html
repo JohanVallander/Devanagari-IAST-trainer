@@ -10,49 +10,50 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link href="styling.css" rel="stylesheet"/>
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body>
-    <nav class="navbar navbar-default">
-      <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height:1px;">
-	<ul class="nav navbar-nav navbar-left">
-	  <li><a id="previous_button" href="#">Previous</a></li>
-	</ul>
+    <div class="container-fluid">
+      <div class="row" id="header">
+	<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1" id="previous_button" role="button">
+	   <span class="glyphicon glyphicon-arrow-left"></span>
+	</div>
 	
-	<ul class="nav navbar-nav">
-	  <li class="dropdown">
-	    <a class="dropdown-toggle" aria-haspopup="true" role="button" data-toggle="dropdown" href="#" aria-expanded="true" ><span id="chapter_description">Chapters </span><span class="caret"/></a>
-	    <ul id="chapters" class="dropdown-menu">
-	      
-	      </ul>
-	  </li>
-	</ul>
-	<ul class="nav navbar-nav navbar-right">
-	  <li><a id="next_button" href="#" >Next</a></li>
-	</ul>
-      </div>
+	<div class="col-xs-6 col-sm-5 col-md-4 col-lg-3">
+	  <div class="dropdown">
+	    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span id="chapter_description"></span><span class="caret"> </span></button>   
+		<ul id="chapters" class="dropdown-menu">
+		</ul>
+	      </li>
+	    </ul>
+	  </div>
+	</div>
+	<!--
+	<div class="col-xs-0 col-sm-1 col-md-2 col-lg-3"></div>
+	-->
+	<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1" role="button" id="next_button">
+	  <span class="glyphicon glyphicon-arrow-right"></span>
+	</div>
 	
-    </nav>
-    <div id="container-fluid">
-      <div class="col-xs-0 col-sm-1 col-md-2 col-lg-3"></div>
-      
-      <div id="sanskrit_verse_div" class="col-xs-12 col-sm-10 col-md-8 col-lg-6 text-center">
-	<h3><span id="sanskrit_verse"></span><h3>
       </div>
-      <div class="col-xs-0 col-sm-1 col-md-2 col-lg-3"></div>
-      
-      <div class="clearfix"></div>
-      <div class="col-xs-0 col-sm-1 col-md-2 col-lg-3"></div>
-      
-      <div id="syllables" class="col-xs-12 col-sm-10 col-md-8 col-lg-6 text-center">
+    </div>
+    <div class="clearfix"></div>    
+
+    <div class="container-fluid">
+      <div class="row">
+	<div class="col-xs-0 col-sm-1 col-md-2 col-lg-3"></div>
+	
+	<div id="sanskrit_verse_div" class="col-xs-12 col-sm-10 col-md-8 col-lg-6 text-center">
+	  <h3><span id="sanskrit_verse"></span><h3>
+	</div>
+	<div class="col-xs-0 col-sm-1 col-md-2 col-lg-3"></div>
+	
+	<div class="clearfix"></div>
+	<div class="col-xs-0 col-sm-1 col-md-2 col-lg-3"></div>
+	
+	<div id="syllables" class="col-xs-12 col-sm-10 col-md-8 col-lg-6 text-center">
+	</div>
+	<div class="col-xs-0 col-sm-1 col-md-2 col-lg-3"></div>
       </div>
-      <div class="col-xs-0 col-sm-1 col-md-2 col-lg-3"></div>
-      
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>

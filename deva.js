@@ -115,26 +115,14 @@ var deva={
     },
     
     loadVerse: function(){
-	this.currentVerse=verseData.verses[this.currentVerseNr];
-	$('#chapter_description').html(verseData.verses[this.currentVerseNr].description);
-	/*
-	if(this.currentVerseNr > 0 )
-	    $('#previous_button').prop("disabled",false);
-	else
-    	    $('#previous_button').prop("disabled",true);
-	
-	if(this.currentVerseNr < verseData.verses.length)
-	    $('next_button').prop("disabled",false);
-	else
-	    $('#next_button').prop("disabled",true);
-	*/
-				    
-					   
-	this.readySanskrit="";
-	this.remainingSanskrit=this.currentVerse.sanskrit;
-	this.mappingsPosition=0;
-	this.updateSanskrit();
-	this.initSyllables(this.currentVerse.mappings);
+	deva.currentVerse=verseData.verses[deva.currentVerseNr];
+	$('#chapter_description').html(verseData.verses[deva.currentVerseNr].description);
+	   
+	deva.readySanskrit="";
+	deva.remainingSanskrit=deva.currentVerse.sanskrit;
+	deva.mappingsPosition=0;
+	deva.updateSanskrit();
+	deva.initSyllables(deva.currentVerse.mappings);
 	$('#sanskrit_verse').fadeTo(500,1);
 	
     },
@@ -155,7 +143,7 @@ var deva={
 	for(nr in verseData.verses){
 	    menuItem = $('<li><a href="#">'+verseData.verses[nr].description + '</a></li');
 	    menuItem.attr("number",nr);
-	    menuItem.click(function(){deva.changeVerse($(this).attr("number"));});
+	    menuItem.click(function(){deva.changeVerse(parseInt($(this).attr("number")));});
 	    $('#chapters').append(menuItem);
 	}
     }
